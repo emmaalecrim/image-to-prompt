@@ -11,7 +11,7 @@ services:
       - http
     image: semitechnologies/weaviate:1.21.0
     ports:
-      - 8080:8001
+      - 8080:8080
     restart: on-failure:0
     environment:
       IMAGE_INFERENCE_API: 'http://i2v-neural:8080'
