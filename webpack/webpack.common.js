@@ -6,6 +6,7 @@ const webpack = require('webpack');
 module.exports = {
   entry: path.resolve(__dirname, '..', './src/index.tsx'),
   module: {
+    exclude: path.resolve(__dirname, '..', './src/api'),
     rules: [
       {
         test: /\.s[ac]ss$/i,
