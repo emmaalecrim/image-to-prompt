@@ -24,6 +24,10 @@ app.post('/add-generation', async (req, res) => {
         // 5. Upload generated images to weaviate
         // 6. Return prompt and distance values
         // use agi to improve prompts based on user/system feedback
+        // TODO: Setup GCP bucket to store images
+        // TODO: Setup cloudbuild to deploy to GCP
+        // TODO: Setup GCP cloud run to run microservices
+        // TODO: Setup multi-tenancy
         return res.send(prompt)
     } catch (e: any) {
         console.error(e.message)
