@@ -1,25 +1,46 @@
-import weaviate, { WeaviateClient, ObjectsBatcher, ApiKey } from 'weaviate-ts-client';
-import fetch from 'node-fetch';
+import weaviate, { WeaviateClient, ApiKey } from 'weaviate-ts-client';
+import 'dotenv/config'
+
 
 const client: WeaviateClient = weaviate.client({
-    scheme: 'https',
-    host: 'image-to-text-ejn1stst.weaviate.network',  // Replace with your endpoint
-    apiKey: new ApiKey('6xUuqg53fAVcYKpkzaUHI6oCfEEblCIXqNsc'),  // Replace w/ your Weaviate instance API key
-    headers: { 'X-OpenAI-Api-Key': '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' },  // Replace with your inference API key
+    scheme: 'http',
+    host: 'localhost:8080',
+    // apiKey: new ApiKey(process.env.WEAVIATE_API_KEY),  // Replace w/ your Weaviate instance API key
+    // headers: { 'X-OpenAI-Api-Key': process.env.OPENAI_API_KEY },  // Replace with your inference API key
 });
 
 const classObj = {
-    'class': 'Question',
-    'vectorizer': 'img2vec-openai',  // If set to "none" you must always provide vectors yourself. Could be any other "text2vec-*" also.
-    'moduleConfig': {
-        'text2vec-openai': {},
-        'generative-openai': {}  // Ensure the `generative-openai` module is used for generative queries
+    "class": "Image",
+    "vectorizer": "img2vec-neural",
+    "vectorIndexConfig": {
+        "distance": "cosine",
     },
-};
+    "moduleConfig": {
+        "img2vec-neural": {
+            "imageFields": [
+                "image"
+            ]
+        }
+    },
+    "properties": [
+        {
+            "name": "image",
+            "dataType": ["blob"],
+        },
+        {
+            "name": "description",
+            "dataType": ["text"],
+            "description": "Text description of the image. Can be a prompt that generates this image or it's img2text description.",
+        },
+    ],
+}
+
+
 
 async function addSchema() {
     const res = await client.schema.classCreator().withClass(classObj).do();
-    console.log(res);
+    console.debug(res);
 }
 
-await addSchema()
+
+
