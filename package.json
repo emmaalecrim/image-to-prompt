@@ -1,7 +1,7 @@
 {
   "name": "image-to-prompt",
   "version": "1.0.0",
-  "description": "This is an image to prompt proof of concept",
+  "description": "RAG Image to prompt tool. Uses weaviate, ViT-L and AGI to assist in image prompt engineering tasks.",
   "main": "index.js",
   "type": "module",
   "scripts": {
