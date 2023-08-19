@@ -1,12 +1,11 @@
 import weaviate, { WeaviateClient, ApiKey } from 'weaviate-ts-client';
-import 'dotenv/config'
 
 
 const client: WeaviateClient = weaviate.client({
     scheme: 'http',
     host: 'localhost:8080',
-    // apiKey: new ApiKey(process.env.WEAVIATE_API_KEY),  // Replace w/ your Weaviate instance API key
-    // headers: { 'X-OpenAI-Api-Key': process.env.OPENAI_API_KEY },  // Replace with your inference API key
+    apiKey: new ApiKey(process.env.WEAVIATE_API_KEY || ""),  // Replace w/ your Weaviate instance API key
+    headers: { 'X-OpenAI-Api-Key': process.env.OPENAI_API_KEY || "" },  // Replace with your inference API key
 });
 
 const classObj = {

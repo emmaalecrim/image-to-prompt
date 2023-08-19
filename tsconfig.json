@@ -23,7 +23,8 @@
     "typeRoots": [
       "./node_modules/@types",
       "./types"
-    ]
+    ],
+    "allowImportingTsExtensions": true
   },
   "ts-node": {
     "esm": true, /* ... Line to be added ... */
