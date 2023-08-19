@@ -6,8 +6,8 @@ const webpack = require('webpack');
 module.exports = {
   entry: path.resolve(__dirname, '..', './src/index.tsx'),
   module: {
-    exclude: path.resolve(__dirname, '..', './src/api'),
     rules: [
+      { exclude: /api/ },
       {
         test: /\.s[ac]ss$/i,
         use: [
@@ -24,7 +24,7 @@ module.exports = {
         use: ['style-loader', 'css-loader'],
       },
       {
-        test: /\.(?:ico|gif|png|jpg|jpeg)$/,
+        test: /\.(?:ico|gif|png|jpg|jpeg|ttf)$/,
         type: 'asset/resource',
       },
       {

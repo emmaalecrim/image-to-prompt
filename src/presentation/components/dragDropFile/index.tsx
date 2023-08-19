@@ -45,7 +45,9 @@ export default function DragDropFile() {
       >
         <input {...getInputProps()} type="file" id="add-image-dropzone" />
         <div>
-          <p className="paragraph">Drag and drop your file here or</p>
+          <p className="drap-drop paragraph">
+            Drag and drop to <ins className="underline">upload</ins>!
+          </p>
         </div>
       </div>
       {thumbs}
