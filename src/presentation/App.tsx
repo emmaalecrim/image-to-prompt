@@ -1,5 +1,7 @@
 import React from 'react';
+import Main from '@components/main';
+import '@sass/main.scss';
 
 export default function App() {
-  return <h1>This is React! test</h1>;
+  return <Main />;
 }
