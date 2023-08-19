@@ -56,6 +56,19 @@ module.exports = {
   resolve: {
     alias: {
       '@src': path.resolve(__dirname, '..', './src'),
+      '@presentation': path.resolve(__dirname, '..', './src/presentation'),
+      '@components': path.resolve(
+        __dirname,
+        '..',
+        './src/presentation/components'
+      ),
+      '@assets': path.resolve(__dirname, '..', './src/presentation/assets'),
+      '@sass': path.resolve(__dirname, '..', './src/presentation/assets/sass'),
+      '@images': path.resolve(
+        __dirname,
+        '..',
+        './src/presentation/assets/images'
+      ),
     },
     modules: ['node_modules'],
     extensions: ['.tsx', '.ts', '.jsx', '.js', '...'],
