@@ -1,5 +1,4 @@
 {
-  "extends": "./tsconfig-base.json",
   "compilerOptions": {
     "target": "es5",
     "lib": [
@@ -30,7 +29,8 @@
     "esm": true, /* ... Line to be added ... */
   },
   "include": [
-    "src"
+    "src",
+    "services/cloudnary.js"
   ],
   "exclude": [
     "node_modules"
