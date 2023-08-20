@@ -1,6 +1,10 @@
 .main{
-    height:100vh;
+    z-index: 2;
+    height:80vh;
     display: flex;
+    flex-flow: column;
     justify-content: center;
     align-items: center;
+    border: 1px solid #000;
+    background: #FCF;
 }
