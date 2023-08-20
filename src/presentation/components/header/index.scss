@@ -1,0 +1,18 @@
+@import "../../assets/sass//main.scss";
+
+.header{
+    position:relative;
+    height: 20vh;
+    width:100%;
+    border: 5px solid #000;
+    background-color: $color-primary
+}
+.logo-box{
+    position: absolute;
+    top: 25%;
+    left: 20px;
+    background-color: $color-secondary;
+    border: 5px solid #000;
+    padding: 20px;
+    box-shadow: 15px 15px;  
+}

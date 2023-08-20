@@ -3,13 +3,17 @@ import React, { useState } from 'react';
 import './index.scss';
 import { useDropzone } from 'react-dropzone';
 
-export default function DragDropFile() {
+interface ISelfProps {
+  callback: (value: Blob) => void;
+}
+export default function DragDropFile({ callback }: ISelfProps) {
   const [fileState, setFilesState] = useState<any>();
   const handleFile = (file: any[]) => {
     setFilesState(file[0]);
+    callback(file[0]);
   };
-  const thumbs = fileState != null && (
-    <div key={fileState.name}>
+  const renderPreview = fileState != null && (
+    <div className="drag-drop--preview" key={fileState.name}>
       <div>
         <img
           alt="image"
@@ -35,22 +39,31 @@ export default function DragDropFile() {
     },
     multiple: true,
     noClick: false,
+    accept: {
+      'image/jpeg': [],
+      'image/png': [],
+      'image/jpg': [],
+    },
   });
-  return (
-    <div>
-      <div
-        {...getRootProps()}
-        id="form-file-upload"
-        className="drag-drop-window"
-      >
-        <input {...getInputProps()} type="file" id="add-image-dropzone" />
-        <div>
-          <p className="drap-drop paragraph">
-            Drag and drop to <ins className="underline">upload</ins>!
-          </p>
-        </div>
+
+  const renderDropZone = (
+    <div
+      {...getRootProps()}
+      className="drag-drop--window"
+      id="form-file-upload"
+    >
+      <input {...getInputProps()} type="file" id="add-image-dropzone" />
+      <div>
+        <p className="drap-drop--text paragraph">
+          Drag and drop to <ins className="underline">upload</ins>!
+        </p>
       </div>
-      {thumbs}
+    </div>
+  );
+
+  return (
+    <div className="drag-drop">
+      {fileState ? renderPreview : renderDropZone}
     </div>
   );
 }

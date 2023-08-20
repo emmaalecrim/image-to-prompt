@@ -1,16 +1,27 @@
 @import"../../assets//sass//main.scss";
-.drag-drop-window{
+.drag-drop{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: $color-secondary;
+    box-shadow: 13px 15px;
+    border: 5px solid #000;
+}
+.drag-drop--window{
     display: flex;
     justify-content: center;
     align-items: center;
     width: 555px;
     height: 233px;
-    border: 5px solid #000;
-    background: $color-secondary;
-    box-shadow: 13px 15px;
 }
-
-.drap-drop{
+.drag-drop--preview{
+   padding: 90px;
+    img{
+        max-height: 400px;
+        max-width: 400px;
+    }
+}
+.drap-drop--text{
 color: #000;
 text-align: center;
 font-family: PressStart2P;
