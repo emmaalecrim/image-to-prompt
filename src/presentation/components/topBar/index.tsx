@@ -1,26 +1,21 @@
 import React from 'react';
 import './index.scss';
-import { ReactComponent as ItpLogo } from '@images/ItpLogo.svg';
+import { ReactComponent as SquareIcon } from '@images/squareIcon.svg';
+import { ReactComponent as XIcon } from '@images/xIcon.svg';
+import { ReactComponent as Underline } from '@images/underline.svg';
 
 export default function TopBar() {
   return (
-    <div className="topBar">
-      <div className=" navBar row">
-        <div className="topBar-col grow-10">
-          <p>hello</p>
-        </div>
-        <div className="topBar-col">
-          <p>hello</p>
-        </div>
-        <div className="topBar-col">
-          <p>hello</p>
-        </div>
-        <div className="topBar-col">
-          <p>hello</p>
-        </div>
+    <div className=" topBar row">
+      <div className="topBar-col grow-10" />
+      <div className="topBar-col logo">
+        <Underline className="underline" />
       </div>
-      <div className="logo-box">
-        <ItpLogo className="name" />
+      <div className="topBar-col logo">
+        <SquareIcon />
+      </div>
+      <div className="topBar-col logo">
+        <XIcon />
       </div>
     </div>
   );
