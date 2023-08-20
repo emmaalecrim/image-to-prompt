@@ -21,7 +21,7 @@ export default function Main() {
     }
   };
   const startCallback = () => {
-    console.log('startCallback was called');
+    // console.log('startCallback was called');
   };
   useEffect(() => {
     if (imageObject?.image && imageObject.IGM) {
