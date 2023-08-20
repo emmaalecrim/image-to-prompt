@@ -4,8 +4,6 @@ import weaviate, { WeaviateClient, generateUuid5 } from 'weaviate-ts-client';
 const client: WeaviateClient = weaviate.client({
     scheme: 'http',
     host: 'localhost:8080',
-    // apiKey: new ApiKey(process.env.WEAVIATE_API_KEY || ""),  // Replace w/ your Weaviate instance API key
-    // headers: { 'X-OpenAI-Api-Key': process.env.OPENAI_API_KEY || "" },  // Replace with your inference API key
 });
 
 (async () => {
@@ -116,7 +114,7 @@ export async function getRankedImages(id: string) {
     const res = await client.graphql
         .get()
         .withNearVector({
-            // @ts-expect-error - wrong completion
+            // @ts-expect-error - completion
             vector: originalVec?.vector,
         })
         .withClassName('GeneratedImage')

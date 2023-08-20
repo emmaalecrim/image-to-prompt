@@ -22,6 +22,7 @@ app.post('/add-generation', async (req, res) => {
         const object = await addImage({ image, description })
         console.debug(`Added image to Weaviate with id ${object.id}`)
         return res.status(200).json({ id: object.id, prompt: description })
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (e: any) {
         console.error(e.message)
         res.send(e.message)
@@ -52,6 +53,7 @@ app.post('/iterate-generation', async (req, res) => {
         const rankedImages = await getRankedImages(id)
         console.debug("--- Rankings", JSON.stringify(rankedImages, null, 2))
         return res.status(200).json(rankedImages)
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (e: any) {
         console.error(e.message)
         res.send(e.message)
