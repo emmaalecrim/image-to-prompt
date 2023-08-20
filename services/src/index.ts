@@ -7,7 +7,8 @@ import { getImages } from './utils/openai.ts'
 import { fetchImg, uploadImg } from './utils/helpers.ts'
 
 
-const upload = multer({ dest: '/images' })
+const storage = multer.memoryStorage()
+const upload = multer({ storage: storage })
 
 
 const app = express()
