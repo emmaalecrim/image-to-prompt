@@ -51,6 +51,7 @@ export async function getRankedImages(id: string) {
     const res = await client.graphql
         .get()
         .withNearVector({
+            // @ts-ignore - typings
             vector: originalVec?.vector,
         })
         .withClassName('GeneratedImage')
