@@ -1,9 +1,14 @@
 import express from 'express'
-import fetch from 'node-fetch'
 import bodyParser from 'body-parser'
-import { inspectImg } from './replicate.ts'
-import { addImage, getRankedImages, addGenerationBatch } from './weaviate.ts'
-import { getImages } from './openai.ts'
+import multer from 'multer'
+import { inspectImg } from './utils/replicate.ts'
+import { addImage, getRankedImages, addGenerationBatch } from './utils/weaviate.ts'
+import { getImages } from './utils/openai.ts'
+import { fetchImg, uploadImg } from './utils/helpers.ts'
+
+
+const upload = multer({ dest: '/images' })
+
 
 const app = express()
 app.use(bodyParser.json())
@@ -11,21 +16,25 @@ app.use(bodyParser.json())
 const port = 8001
 
 
-app.post('/add-generation', async (req, res) => {
+app.post('/add-generation', upload.single('image'), async (req, res) => {
     try {
-        const { url } = req.body
+        const file = req.file
+        if (!file) {
+            throw new Error("No file uploaded")
+        }
+        const url = await uploadImg(Buffer.from(file.buffer).toString('base64'))
         // TODO: setup img upload to Storage bucket and return url
-        // 1. Call inspector to decribe image once you have the url and upload to weaviate
         console.debug(`Inspecting image at ${url}`)
+        // 1. Call inspector to decribe image once you have the url and upload to weaviate
         const [description, image] = await Promise.all([inspectImg(url), fetchImg(url)].map(p => p.catch(e => e)))
         // 2. Add Goal Image to Weaviate(with generated prompt)
         const object = await addImage({ image, description })
         console.debug(`Added image to Weaviate with id ${object.id}`)
-        return res.status(200).json({ id: object.id, prompt: description })
+        return res.status(200).json({ id: object.id, prompt: description, url })
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (e: any) {
         console.error(e.message)
-        res.send(e.message)
+        return res.send(e.message)
     }
 })
 
@@ -65,9 +74,6 @@ app.listen(port, () => {
     console.log(`App listening on port ${port}`)
 })
 
-// TODO: move to utils
-const fetchImg = async (url: string) => fetch(url)
-    .then(res => res.arrayBuffer())
-    .then(buf => Buffer.from(buf).toString('base64'))
+
 
 
