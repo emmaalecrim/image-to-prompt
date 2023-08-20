@@ -10,11 +10,14 @@
   "scripts": {
     "docker:up": "docker-compose up -d",
     "docker:down": "docker-compose down",
-    "dev": "nodemon",
+    "start": "nodemon",
+    "create-classes": "ts-node createClasses.ts",
+    "demo": "yarn && yarn docker:up && yarn create-classes && start",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint --fix \"*/**/*.{js,ts,tsx}\""
   },
   "devDependencies": {
+    "@types/multer": "^1.4.7",
     "@typescript-eslint/eslint-plugin": "^6.4.0",
     "@typescript-eslint/parser": "^6.4.0",
     "dotenv": "^16.3.1",
@@ -29,6 +32,7 @@
     "body-parser": "^1.20.2",
     "express": "^4.18.2",
     "graphql": "^16.8.0",
+    "multer": "^1.4.5-lts.1",
     "node-fetch": "^3.3.2",
     "openai": "^4.0.1",
     "replicate": "^0.16.1",
