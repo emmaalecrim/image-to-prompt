@@ -8,7 +8,7 @@ export default function Header() {
     <div className="header">
       <TopBar />
       <div className="logo-box">
-        <ItpLogo className="name" />
+        <h1 className="name">iGT</h1>
       </div>
     </div>
   );

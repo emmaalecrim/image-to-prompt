@@ -1,5 +1,0 @@
-{
-  "watch": ["src/infrastructure/microservices", ".env"],
-  "ext": ".ts",
-  "exec": "ts-node -r dotenv/config ./src/infrastructure/microservices/index.ts"
-}

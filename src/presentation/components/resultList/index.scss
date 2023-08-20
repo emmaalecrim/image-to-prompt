@@ -1,0 +1,91 @@
+@import"../../assets//sass//main.scss";
+.resultList{
+    padding-right: 2rem;
+    padding-top: 6.5rem;
+    max-height:80vh ;
+    @supports (-moz-appearance: none) {
+        overflow-y: auto;
+      }
+
+      @supports (-webkit-font-smoothing: antialiased) {
+        overflow-y: scroll;
+      }
+
+      &::-webkit-scrollbar {
+        background-color: transparent;
+        width: 0px;
+      }
+
+      &:hover {
+        //design scrollbar
+        &::-webkit-scrollbar-track {
+          border-radius: 5px;
+          background-color: transparent;
+        }
+
+        &::-webkit-scrollbar {
+          width: 3px;
+          border-radius: 5px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background-color: $color-secondary;
+          border-radius: 5px;
+          width: 10px;
+        }
+
+        &::-webkit-scrollbar-corner {
+          display: none;
+        }
+
+        &::-webkit-scrollbar-button:vertical:start:increment,
+        ::-webkit-scrollbar-button:vertical:end:decrement,
+        &::-webkit-scrollbar-button:horizontal:start:increment,
+        &::-webkit-scrollbar-button:horizontal:end:decrement {
+          display: none;
+        }
+      }
+    .row{
+        display: flex;
+        flex-flow: row;
+        justify-content: space-around;
+        img{
+            margin-bottom: 3rem;
+            max-width: 31.25rem;
+            max-height: 16.25rem;
+            box-shadow:  1rem 1rem ;
+        }
+       .details{
+        margin-left: 3rem;
+        margin-top: 3rem;
+        background-color: $color-secondary;
+        width: 68.75rem;
+        border:  0.25rem solid #000;
+        border-top: none;
+        box-shadow:  1rem 1rem ;
+    
+        .box{
+
+            height: 100%;
+        }
+            .col{
+                display: flex;
+                flex-flow: column;
+                margin-top: 3rem;
+                .name{
+                    padding: 0.5rem 1rem;
+                    text-align: center;
+                    background-color: white;
+                    margin-left: -2rem;
+                }
+                .value{
+                    padding: 0.5rem 1rem;
+                    text-align: center;
+                    background-color: white;
+                    margin-top: 2rem;
+                    margin-left: 2rem;
+                }
+            }
+       }
+    }
+}

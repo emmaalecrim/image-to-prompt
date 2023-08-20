@@ -3,75 +3,77 @@
     display: flex;
     flex-flow: column;
     align-items: center;
-    justify-content:space-around ;
+    justify-content:center ;
     height: 90%;
     .box{
         background-color: $color-secondary;   
-        box-shadow: 13px 15px;
+        box-shadow: 0.875rem 0.875rem;
     }
     
     .body{
-        width: 537px;
-        max-height: 300px;
-        border:  5px solid #000;
+        width: 47rem;
+        max-height: 18.75rem;
+        border:  0.25rem solid #000;
         border-top: none;
         .list{
-            padding: 45px;
+            padding: 2.75rem;
             .row{
                 display: flex;
                 flex-flow: row;
-                width: 441px;
-                height: 71px;
+                height: 4.375rem;
+                width: 100%;
                 justify-content: space-between;
                 .col{
                     display: flex;
                     flex-flow: column;
-
                     &.right{
+                        max-width: 30rem;
                         justify-content: start;
                      
                     }
                     &.left{
+                        max-width: 15rem;
                         justify-content: end;
                      
                     }
                     h2{
-                        padding: 5px 19px;
+                        
+                        padding: 0.25rem 1.25rem;
                         background-color: white;
-                        box-shadow: 5px 5px;
+                        box-shadow: 0.25rem 0.25rem;
                     }
                 }
             }
         }
     }
     .button{
+        margin-top: 2rem;
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 250px;
-        height: 65px;
+        width: 15.625rem;
+        height: 4rem;
         background-color: $color-secondary;
-        border:  5px solid #000;
-        box-shadow: 8px 4px ;
+        border:  0.25rem solid #000;
+        box-shadow: 0.5rem 0.25rem ;
         text-align: center;
         cursor: pointer;
         h1{
             
             text-align: center;
             font-family: Press Start 2P;
-            font-size: 22px;
+            font-size: 1.375rem;
             font-style: normal;
             font-weight: 400;
-            line-height: 24px; /* 109.091% */
-            letter-spacing: -0.242px;
+            line-height: 1.5rem; /* 109.091% */
 
             background-color: white;
-            padding: 10px 30px;
+            padding: 0.625rem 1.875rem;
             
         }
         &:active{
             box-shadow: none;
-            transform: translate(8px, 4px)
+            transform: translate(0.5rem, 0.25rem)
         }
     }
 }

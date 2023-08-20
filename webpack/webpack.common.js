@@ -70,6 +70,7 @@ module.exports = {
         '..',
         './src/presentation/assets/images'
       ),
+      '@useCases': path.resolve(__dirname, '..', './src/application/useCases'),
     },
     modules: ['node_modules'],
     extensions: ['.tsx', '.ts', '.jsx', '.js', '...'],

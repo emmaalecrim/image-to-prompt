@@ -8,6 +8,7 @@
         "@assets/*": ["src/presentation/assets/*"],
         "@images/*": ["src/presentation/assets/images/*"],
         "@sass/*": ["src/presentation/assets/sass/*"],
+        "@useCases/*": ["src/application/useCases/*"],
       }
     }
   }
