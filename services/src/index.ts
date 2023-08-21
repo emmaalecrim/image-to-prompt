@@ -20,7 +20,6 @@ const port = 8001
 
 app.post('/add-generation', upload.single('file'), async (req, res) => {
     try {
-        console.log("answer: ", req)
         const file = req.file
 
         if (!file) {
