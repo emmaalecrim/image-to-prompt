@@ -32,7 +32,11 @@ const dummyData = [
     generation: 1,
   },
 ];
-export default function ResultList() {
+interface ISelfProps {
+  originalImage: Blob;
+}
+
+export default function ResultList({ originalImage }: ISelfProps) {
   const renderList = dummyData.map((item) => {
     return (
       <div className="row" key={item.id}>
@@ -56,14 +60,18 @@ export default function ResultList() {
 
   return (
     <div className="resultList">
-      <img
-        alt="image"
-        src={fileState.preview}
-        // Revoke data uri after image is loaded
-        onLoad={() => {
-          URL.revokeObjectURL(fileState.preview);
-        }}
-      />
+      <div className="resultList--originalImage">
+        <h1>Original Image</h1>
+        <img
+          alt="image"
+          src={originalImage.preview}
+          // Revoke data uri after image is loaded
+          onLoad={() => {
+            URL.revokeObjectURL(originalImage.preview);
+          }}
+        />
+      </div>
+      <h1 className="resultList--generated-images-title">Generated Images</h1>
       {renderList}
     </div>
   );

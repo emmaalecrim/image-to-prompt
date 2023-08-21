@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import DragDropFile from '@components/dragDropFile';
 import InputWindow from '@components/inputWindow';
 import LoadingWindow from '@components/loadWindow';
-import startIGMProcess from '@useCases/startIGMProcess';
 import './index.scss';
 import ESteps from './constant';
 import ResultList from '../resultList';
@@ -49,7 +48,7 @@ export default function Main() {
     </>
   );
   const renderLoad = <LoadingWindow />;
-  const renderResultList = <ResultList />;
+  const renderResultList = <ResultList originalImage={imageObject.image!} />;
   return (
     <div className="main">
       {currentStep === ESteps.START && renderStart}

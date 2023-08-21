@@ -1,6 +1,5 @@
 import React from 'react';
 import './index.scss';
-import { ReactComponent as ItpLogo } from '@images/ItpLogo.svg';
 import TopBar from '../topBar';
 
 export default function Header() {
@@ -10,6 +9,9 @@ export default function Header() {
       <div className="logo-box">
         <h1 className="name">iGT</h1>
       </div>
+      <p className="description">
+        Image Generator Tester. Generate diffusion images and more!{' '}
+      </p>
     </div>
   );
 }
