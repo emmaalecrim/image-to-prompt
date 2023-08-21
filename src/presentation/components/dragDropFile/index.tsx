@@ -13,17 +13,15 @@ export default function DragDropFile({ callback }: ISelfProps) {
     callback(file[0]);
   };
   const renderPreview = fileState != null && (
-    <div className="drag-drop--preview" key={fileState.name}>
-      <div>
-        <img
-          alt="image"
-          src={fileState.preview}
-          // Revoke data uri after image is loaded
-          onLoad={() => {
-            URL.revokeObjectURL(fileState.preview);
-          }}
-        />
-      </div>
+    <div>
+      <img
+        alt="image"
+        src={fileState.preview}
+        // Revoke data uri after image is loaded
+        onLoad={() => {
+          URL.revokeObjectURL(fileState.preview);
+        }}
+      />
     </div>
   );
 
@@ -49,21 +47,21 @@ export default function DragDropFile({ callback }: ISelfProps) {
   const renderDropZone = (
     <div
       {...getRootProps()}
-      className="drag-drop--window"
+      className={fileState ? 'drag-drop--preview' : 'drag-drop--window'}
       id="form-file-upload"
     >
       <input {...getInputProps()} type="file" id="add-image-dropzone" />
       <div>
-        <p className="drap-drop--text paragraph">
-          Drag and drop to <ins className="underline">upload</ins>!
-        </p>
+        {fileState ? (
+          renderPreview
+        ) : (
+          <p className="drap-drop--text paragraph">
+            Drag and drop to <ins className="underline">upload</ins>!
+          </p>
+        )}
       </div>
     </div>
   );
 
-  return (
-    <div className="drag-drop">
-      {fileState ? renderPreview : renderDropZone}
-    </div>
-  );
+  return <div className="drag-drop">{renderDropZone}</div>;
 }

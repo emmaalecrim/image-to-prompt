@@ -4,37 +4,41 @@
     justify-content: center;
     align-items: center;
     background: $color-secondary;
-    box-shadow: 13px 15px;
-    border: 5px solid #000;
+    box-shadow: 0.875rem 0.875rem;
+    border: 0.25rem solid #000;
+    padding: none;
 }
 .drag-drop--window{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 555px;
-    height: 233px;
+    width: 34.375rem;
+    height: 14.375rem;
 }
 .drag-drop--preview{
-   padding: 90px;
-    img{
-        max-height: 400px;
-        max-width: 400px;
-    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 34rem;
+    height: 25rem;
+   img{
+    max-height: 21.875rem;
+    max-width: 21.875rem;
+   }
 }
 .drap-drop--text{
 color: #000;
 text-align: center;
 font-family: PressStart2P;
-font-size: 22px;
+font-size: 1.375rem;
 font-style: normal;
 font-weight: 400;
-line-height: 24px; /* 109.091% */
-letter-spacing: -0.242px;
-padding:0 120px 0 120px;
+line-height: 1.5rem; /* 109.091% */
+padding:0 7.5rem 0 7.5rem;
 
 }
 
 .underline{
     text-decoration: underline;
-    text-decoration-thickness: 3px; 
+    text-decoration-thickness: 0.25rem; 
 }

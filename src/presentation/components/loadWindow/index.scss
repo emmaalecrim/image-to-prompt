@@ -1,0 +1,24 @@
+@import"../../assets//sass//main.scss";
+.loading{
+    
+    background: $color-secondary;
+    box-shadow: 0.875rem 0.875rem;
+    border: 0.25rem solid #000;
+
+  .body{
+    display: flex;
+    justify-content: space-around;
+    flex-flow: column;
+    align-items: center;
+    width: 34.375rem;
+    height: 14.375rem;
+    padding: 5rem;
+    img{
+        border: 0.25rem solid #000; 
+    }
+    h1{
+        text-transform: none;
+    }
+  }
+   
+}

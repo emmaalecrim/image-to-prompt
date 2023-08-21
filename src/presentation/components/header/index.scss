@@ -4,15 +4,33 @@
     position:relative;
     height: 20vh;
     width:100%;
-    border: 5px solid #000;
-    background-color: $color-primary
+    border: 0.25rem solid #000;
+    background-color: $color-primary;
+    .description{
+        max-width: 55rem;
+        padding: 0.5rem 1.5rem ;
+        background-color: white;
+        position: absolute;
+        top: 40%;
+        left: 23rem;
+    }
 }
 .logo-box{
     position: absolute;
-    top: 25%;
-    left: 20px;
+    top: 60%;
+    left: 1.25rem;
     background-color: $color-secondary;
-    border: 5px solid #000;
-    padding: 20px;
-    box-shadow: 15px 15px;  
+    border: 0.25rem solid #000;
+    padding: 1.25rem;
+    box-shadow: 0.875rem 0.875rem;  
+    .name{
+        padding: 2.75rem 0.75rem;
+        color: #000;
+        font-family: PressStart2P;
+        font-size: 5rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1.5rem; /* 28.916% */
+        text-transform: none;
+    }
 }
