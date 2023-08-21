@@ -9,9 +9,10 @@ export default function Header() {
       <div className="logo-box">
         <h1 className="name">iGT</h1>
       </div>
-      <p className="description">
-        Image Generator Tester. Generate diffusion images and more!{' '}
-      </p>
+      <div className="description">
+        <p>Image Generator Tester.</p>
+        <p>Generate diffusion images and more!</p>
+      </div>
     </div>
   );
 }
