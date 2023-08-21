@@ -39,7 +39,6 @@ app.post('/add-generation', upload.single('image'), async (req, res) => {
     }
 })
 
-// TODO: Setup GCP bucket to store images
 // TODO: Setup cloudbuild to deploy to GCP
 // TODO: Setup GCP cloud run to run microservices
 // TODO: Setup multi-tenancy
