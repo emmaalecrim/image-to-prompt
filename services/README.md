@@ -13,6 +13,7 @@ The iGP Backend Services project provides backend infrastructure for the iGP pla
 3. Install Docker and ensure the Docker daemon is running.
 4. add the following variables to your .env file:
 5. Run `auth` to authenticate with gcloud. Must have gcloud CLI installed. Uses applicationDefault Auth.
+6. Uncomment the self invokin fn in utils/weaviate.ts the first run to create the classes in weaviate.
 
 ```.env
 # your Replicate API key  https://replicate.com/account/api-tokens
