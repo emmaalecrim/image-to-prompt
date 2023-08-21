@@ -9,11 +9,12 @@ The iGP Backend Services project provides backend infrastructure for the iGP pla
 ## Setup
 
 1. Install Node.js and npm.
-2. Install Yarn globally: `npm install -g yarn`.
-3. Install Docker and ensure the Docker daemon is running.
-4. add the following variables to your .env file:
-5. Run `auth` to authenticate with gcloud. Must have gcloud CLI installed. Uses applicationDefault Auth.
-6. Uncomment the self invokin fn in utils/weaviate.ts the first run to create the classes in weaviate.
+2. Choose the path that contains the backend: `cd services`.
+3. Install Yarn globally: `npm install -g yarn`.
+4. Install Docker and ensure the Docker daemon is running.
+5. add the following variables to your .env file:
+6. Run `auth` to authenticate with gcloud. Must have gcloud CLI installed. Uses applicationDefault Auth.
+7. Uncomment the self invokin fn in utils/weaviate.ts the first run to create the classes in weaviate.
 
 ```.env
 # your Replicate API key  https://replicate.com/account/api-tokens
