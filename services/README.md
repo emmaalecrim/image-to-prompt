@@ -11,6 +11,18 @@ The iGP Backend Services project provides backend infrastructure for the iGP pla
 1. Install Node.js and npm.
 2. Install Yarn globally: `npm install -g yarn`.
 3. Install Docker and ensure the Docker daemon is running.
+4. add the following variables to your .env file:
+
+```.env
+# your Replicate API key  https://replicate.com/account/api-tokens
+REPLICATE_API_KEY=""
+# Your OpenAI key
+OPENAI_API_KEY=""
+# Your GCP Bucket name defaults to image-to-prompt
+# https://cloud.google.com/storage/docs/creating-buckets
+# Also make sure your bucket is setup for public access by enabling allUsers as reader
+BUCKET_NAME=""
+```
 
 ## How It Works
 
