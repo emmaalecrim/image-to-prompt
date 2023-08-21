@@ -12,6 +12,7 @@ The iGP Backend Services project provides backend infrastructure for the iGP pla
 2. Install Yarn globally: `npm install -g yarn`.
 3. Install Docker and ensure the Docker daemon is running.
 4. add the following variables to your .env file:
+5. Run `auth` to authenticate with gcloud. Must have gcloud CLI installed. Uses applicationDefault Auth
 
 ```.env
 # your Replicate API key  https://replicate.com/account/api-tokens
