@@ -26,14 +26,13 @@ app.post('/add-generation', upload.single('image'), async (req, res) => {
         // TODO: setup img upload to Storage bucket and return url
         const url = await uploadFromMemory(file.buffer, file.originalname)
         console.debug(`Inspecting image at ${url}`)
-        return res.send({ url })
         // 1. Call inspector to decribe image once you have the url and upload to weaviate
         const [description, image] = await Promise.all([inspectImg(url), fetchImg(url)].map(p => p.catch(e => e)))
         // 2. Add Goal Image to Weaviate(with generated prompt)
         const object = await addImage({ image, description })
         console.debug(`Added image to Weaviate with id ${object.id}`)
         return res.status(200).json({ id: object.id, prompt: description, url })
-        eslint - disable - next - line @typescript-eslint / no - explicit - any
+        // eslint - disable - next - line @typescript-eslint / no - explicit - any
     } catch (e: any) {
         console.error(e.message)
         return res.json({ error: e.message })

@@ -1,4 +1,4 @@
-import { client } from './src/weaviate'
+import { client } from './src/utils/weaviate'
 
 (async () => {
     console.info("Creating classes")
