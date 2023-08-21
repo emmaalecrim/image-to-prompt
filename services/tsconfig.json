@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "sourceMap": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react",
+    "typeRoots": [
+      "./node_modules/@types",
+      "./types"
+    ],
+    "allowImportingTsExtensions": true
+  },
+  "ts-node": {
+    "esm": true, /* ... Line to be added ... */
+  },
+  "include": [
+    "src",
+    "services/cloudnary.js"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
