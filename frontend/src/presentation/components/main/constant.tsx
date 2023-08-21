@@ -1,6 +1,7 @@
-enum ESteps {
+export enum ESteps {
   START = 1,
   LOAD = 2,
   OUTPUT = 3,
 }
-export default ESteps;
+
+export const apiUrl = 'http://localhost:8001/';

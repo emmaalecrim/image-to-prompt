@@ -3,13 +3,30 @@ import DragDropFile from '@components/dragDropFile';
 import InputWindow from '@components/inputWindow';
 import LoadingWindow from '@components/loadWindow';
 import './index.scss';
-import ESteps from './constant';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import axios from 'axios';
+import { ESteps, apiUrl } from './constant';
 import ResultList from '../resultList';
 
 export interface IImageObject {
   image?: Blob;
   IGM?: string;
 }
+
+const addGeneration = async (file: Blob) =>
+  axios.post(`${apiUrl}add-generation`, { file });
+const iterateGeneration = async (
+  prompt: string,
+  id: string,
+  generation: string
+) =>
+  axios.post(
+    `${apiUrl}iterate-generation`,
+    { prompt, id, generation },
+    {
+      headers: { 'Content-Type': 'multipart/form-data' },
+    }
+  );
 export default function Main() {
   const [imageObject, setImageObject] = useState<IImageObject>({
     IGM: 'DALL-E-2',
@@ -26,10 +43,14 @@ export default function Main() {
   };
   const startCallback = async () => {
     setCurrentStep(ESteps.LOAD);
-    await setTimeout(() => {
+    if (!imageObject.image) {
+      setCurrentStep(ESteps.START);
+      return;
+    }
+    await addGeneration(imageObject.image).then((response) => {
+      console.log('response: ', response);
       setCurrentStep(ESteps.OUTPUT);
-      return true;
-    }, 5000);
+    });
   };
 
   useEffect(() => {
