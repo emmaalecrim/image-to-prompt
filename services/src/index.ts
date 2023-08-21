@@ -60,7 +60,7 @@ app.post('/iterate-generation', async (req, res) => {
         const descriptions = await Promise.all(generations.map((url) => inspectImg(url).catch(e => e)))
         console.debug(`--- Descriptions: ${JSON.stringify(descriptions, null, 2)}`)
         const images = await Promise.all(generations.map((url) => fetchImg(url).catch(e => e)))
-        await addGenerationBatch(images.map((image, i) => ({ image, description: descriptions[i], url: generation[i] })), { generation, baseImageId: id })
+        await addGenerationBatch(images.map((image, i) => ({ image, description: descriptions[i], url: generations[i] })), { generation, baseImageId: id })
         const rankedImages = await getRankedImages(id)
         console.debug("--- Rankings", JSON.stringify(rankedImages?.data?.Get?.GeneratedImage, null, 2))
         return res.status(200).json(rankedImages?.data?.Get?.GeneratedImage)
