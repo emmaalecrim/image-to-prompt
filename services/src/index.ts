@@ -22,7 +22,7 @@ app.post('/add-generation', upload.single('file'), async (req, res) => {
     try {
         console.log("answer: ", req)
         const file = req.file
-      
+
         if (!file) {
             throw new Error("No file uploaded")
         }
@@ -63,8 +63,8 @@ app.post('/iterate-generation', async (req, res) => {
         const images = await Promise.all(generations.map((url) => fetchImg(url).catch(e => e)))
         await addGenerationBatch(images.map((image, i) => ({ image, description: descriptions[i], url: generation[i] })), { generation, baseImageId: id })
         const rankedImages = await getRankedImages(id)
-        console.debug("--- Rankings", JSON.stringify(rankedImages, null, 2))
-        return res.status(200).json(rankedImages?.data?.Get?.GeneratedImages)
+        console.debug("--- Rankings", JSON.stringify(rankedImages?.data?.Get?.GeneratedImage, null, 2))
+        return res.status(200).json(rankedImages?.data?.Get?.GeneratedImage)
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (e: any) {
         console.error(e.message)
