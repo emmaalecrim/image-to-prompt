@@ -30,6 +30,7 @@ app.post('/add-generation', upload.single('file'), async (req, res) => {
         console.debug(`Inspecting image at ${url}`)
         // 1. Call inspector to decribe image once you have the url and upload to weaviate
         const [description, image] = await Promise.all([inspectImg(url), fetchImg(url)].map(p => p.catch(e => e)))
+        console.debug("description: ", description)
         // 2. Add Goal Image to Weaviate(with generated prompt)
         const object = await addImage({ image, description })
         console.debug(`Added image to Weaviate with id ${object.id}`)

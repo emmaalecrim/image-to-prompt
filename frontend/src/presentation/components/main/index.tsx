@@ -13,6 +13,16 @@ export interface IImageObject {
   IGM?: string;
 }
 
+export interface IResultListData {
+  generation: number;
+  _additional: {
+    certainty: number;
+    distance: number;
+  };
+  description: string;
+  url: string;
+}
+
 const addGeneration = async (data: FormData) =>
   axios.post(`${apiUrl}add-generation`, data);
 const iterateGeneration = async (
@@ -23,18 +33,19 @@ const iterateGeneration = async (
   axios.post(
     `${apiUrl}iterate-generation`,
     { prompt, id, generation },
-    {
-      headers: { 'Content-Type': 'multipart/form-data' },
-    }
+    { headers: { 'Content-Type': 'application/json' } }
   );
 export default function Main() {
   const [imageObject, setImageObject] = useState<IImageObject>({
     IGM: 'DALL-E-2',
   });
   const [currentStep, setCurrentStep] = useState<ESteps>(ESteps.START);
+  const [resultListData, setResultListData] = useState<IResultListData[]>([]);
   const [isActiveButton, setIsActiveButton] = useState<boolean>(false);
   const useSetImageValue = (value: Blob) => {
     if (value) {
+      console.log('setting value:', value);
+      console.trace();
       setImageObject({
         ...imageObject,
         image: value,
@@ -50,8 +61,19 @@ export default function Main() {
     const formData = new FormData();
     formData.append('file', imageObject.image);
     await addGeneration(formData).then((response) => {
-      console.log('response: ', response);
-      setCurrentStep(ESteps.OUTPUT);
+      if ((response.status = 200)) {
+        const { data } = response;
+        sessionStorage.setItem('image', data.url);
+        iterateGeneration(data.prompt, data.id, 1).then(
+          (iterateGenerationResponse) => {
+            console.log('response:', iterateGenerationResponse);
+            setResultListData(iterateGenerationResponse.data);
+            setCurrentStep(ESteps.OUTPUT);
+          }
+        );
+      } else {
+        setCurrentStep(ESteps.START);
+      }
     });
   };
 
@@ -71,7 +93,7 @@ export default function Main() {
     </>
   );
   const renderLoad = <LoadingWindow />;
-  const renderResultList = <ResultList originalImage={imageObject.image!} />;
+  const renderResultList = <ResultList resultListData={resultListData!} />;
   return (
     <div className="main">
       {currentStep === ESteps.START && renderStart}

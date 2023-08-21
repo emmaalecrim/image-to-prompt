@@ -1,6 +1,8 @@
+/* eslint-disable no-underscore-dangle */
 import React from 'react';
 import TopBar from '../topBar';
 import './index.scss';
+import { IResultListData } from '../main';
 
 const dummyData = [
   {
@@ -33,20 +35,21 @@ const dummyData = [
   },
 ];
 interface ISelfProps {
-  originalImage: Blob;
+  resultListData: IResultListData[];
 }
 
-export default function ResultList({ originalImage }: ISelfProps) {
-  const renderList = dummyData.map((item) => {
+export default function ResultList({ resultListData }: ISelfProps) {
+  const currentImage = sessionStorage.getItem('image');
+  const renderList = resultListData.map((item) => {
     return (
-      <div className="row" key={item.id}>
-        <img src={item.image} alt="image" />
+      <div className="row">
+        <img src={item.url} alt="image" />
         <div className="details">
           <TopBar />
           <div className="row box">
             <div className="col">
               <p className="name">Distance</p>
-              <p className="value">{item.distance}</p>
+              <p className="value">{item._additional.distance}</p>
             </div>
             <div className="col">
               <p className="name">Generation</p>
@@ -62,14 +65,7 @@ export default function ResultList({ originalImage }: ISelfProps) {
     <div className="resultList">
       <div className="resultList--originalImage">
         <h1>Original Image</h1>
-        <img
-          alt="image"
-          src={originalImage.preview}
-          // Revoke data uri after image is loaded
-          onLoad={() => {
-            URL.revokeObjectURL(originalImage.preview);
-          }}
-        />
+        <img alt="image" src={currentImage as string} />
       </div>
       <h1 className="resultList--generated-images-title">Generated Images</h1>
       {renderList}
