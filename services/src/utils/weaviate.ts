@@ -55,7 +55,7 @@ export async function getRankedImages(id: string) {
             vector: originalVec?.vector,
         })
         .withClassName('GeneratedImage')
-        .withFields('description generation _additional url { certainty distance }')
+        .withFields('description generation url _additional  { certainty distance }')
         .do();
 
     return res
