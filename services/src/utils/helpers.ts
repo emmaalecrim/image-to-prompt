@@ -1,21 +1,20 @@
 import fetch from 'node-fetch'
+import { Storage } from '@google-cloud/storage';
 
-const { FREEIMAGE_API_KEY } = process.env
+
+// Creates a client
+const storage = new Storage();
 
 export const fetchImg = async (url: string) => fetch(url)
     .then(res => res.arrayBuffer())
     .then(buf => Buffer.from(buf).toString('base64'))
 
-export const uploadImg = async (image: string) => {
-    const res = await fetch('https://freeimage.host/api/1/upload', {
-        method: 'POST',
-        body: JSON.stringify({
-            key: FREEIMAGE_API_KEY,
-            action: 'upload',
-            source: image,
-        })
-    })
-    const data = await res.json()
-    // @ts-expect-error - typings
-    return data?.image?.url
+// The ID of your GCS bucket
+const bucketName = process.env.BUCKET_NAME || 'image-to-prompt';
+
+
+export async function uploadFromMemory(contents: string | Buffer, destFileName: string) {
+    const filename = encodeURI(destFileName)
+    await storage.bucket(bucketName).file(destFileName).save(contents);
+    return `https://storage.googleapis.com/${bucketName}/${filename}`
 }
