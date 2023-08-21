@@ -1,6 +1,7 @@
 import express from 'express'
 import bodyParser from 'body-parser'
 import multer from 'multer'
+import cors from 'cors'
 import { inspectImg } from './utils/replicate.ts'
 import { addImage, getRankedImages, addGenerationBatch } from './utils/weaviate.ts'
 import { getImages } from './utils/openai.ts'
@@ -12,7 +13,7 @@ const upload = multer({ storage: storage })
 
 
 const app = express()
-app.use(bodyParser.json())
+app.use(cors({ origin: true }), bodyParser.json())
 
 const port = 8001
 
