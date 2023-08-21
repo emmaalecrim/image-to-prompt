@@ -1,10 +1,4 @@
-import weaviate, { WeaviateClient } from 'weaviate-ts-client';
-
-// @ts-ignore - let me be happy
-export const client: WeaviateClient = weaviate.client({
-    scheme: 'http',
-    host: 'localhost:8080',
-});
+import { client } from "./weaviate.ts";
 
 (async () => {
     console.info("Creating classes")

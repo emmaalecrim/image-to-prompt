@@ -11,7 +11,7 @@
     "docker:up": "docker-compose up -d",
     "docker:down": "docker-compose down",
     "start": "nodemon",
-    "create-classes": "ts-node createClasses.ts",
+    "create-classes": "ts-node ./src/utils/createClasses.ts",
     "auth": "gcloud auth application-default login",
     "demo": "yarn && yarn docker:up && yarn create-classes && yarn start",
     "test": "echo \"Error: no test specified\" && exit 1",
