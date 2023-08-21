@@ -13,8 +13,6 @@ services:
     ports:
       - 8080:8080
     restart: on-failure:0
-    volumes:
-      - /var/weaviate:/var/lib/weaviate # <== set a volume here to persist data
     environment:
       CLIP_INFERENCE_API: 'http://multi2vec-clip:8080'
       QUERY_DEFAULTS_LIMIT: 25
