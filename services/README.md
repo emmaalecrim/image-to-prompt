@@ -13,7 +13,6 @@ The iGP Backend Services project provides backend infrastructure for the iGP pla
 3. Install Docker and ensure the Docker daemon is running.
 4. add the following variables to your .env file:
 5. Run `auth` to authenticate with gcloud. Must have gcloud CLI installed. Uses applicationDefault Auth.
-6. Make sure you have a public access GCP cloud storage bucket, allUsers should be able to Read objects.
 
 ```.env
 # your Replicate API key  https://replicate.com/account/api-tokens
@@ -22,7 +21,7 @@ REPLICATE_API_KEY=""
 OPENAI_API_KEY=""
 # Your GCP Bucket name defaults to image-to-prompt
 # https://cloud.google.com/storage/docs/creating-buckets
-# Also make sure your bucket is setup for public access by enabling allUsers as reader
+# Also make sure your bucket is setup for public access by enabling "allUsers" as "Storage Legacy Object Reader"(You can add this in bucket's permissions tab)
 BUCKET_NAME=""
 ```
 
