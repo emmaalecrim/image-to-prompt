@@ -13,8 +13,8 @@ export interface IImageObject {
   IGM?: string;
 }
 
-const addGeneration = async (file: Blob) =>
-  axios.post(`${apiUrl}add-generation`, { file });
+const addGeneration = async (data: FormData) =>
+  axios.post(`${apiUrl}add-generation`, data);
 const iterateGeneration = async (
   prompt: string,
   id: string,
@@ -47,7 +47,9 @@ export default function Main() {
       setCurrentStep(ESteps.START);
       return;
     }
-    await addGeneration(imageObject.image).then((response) => {
+    const formData = new FormData();
+    formData.append('file', imageObject.image);
+    await addGeneration(formData).then((response) => {
       console.log('response: ', response);
       setCurrentStep(ESteps.OUTPUT);
     });

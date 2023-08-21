@@ -18,9 +18,11 @@ app.use(cors({ origin: true }), bodyParser.json())
 const port = 8001
 
 
-app.post('/add-generation', upload.single('image'), async (req, res) => {
+app.post('/add-generation', upload.single('file'), async (req, res) => {
     try {
+        console.log("answer: ", req)
         const file = req.file
+      
         if (!file) {
             throw new Error("No file uploaded")
         }
