@@ -42,7 +42,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-webpack-plugin": "^4.0.1",
     "fs": "^0.0.1-security",
-    "graphql": "^16.8.0",
+    "graphql": "^16.8.1",
     "html-webpack-plugin": "^5.5.3",
     "husky": "^8.0.3",
     "nodemon": "^3.0.1",
